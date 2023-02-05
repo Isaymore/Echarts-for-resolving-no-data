@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="noData" style="width: 100%;height:400px;"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
+    <script>
+        const init = (data) => {
+            const myChart = echarts.init(document.getElementById('noData'))
+            const option = {
+                xAxis: {
+                    // show: !data.length, // 无数据时不展示 x 轴
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value',
+                    min: 0,
+                    max: data.length ? null : 10
+                },
+                series: [
+                    {
+                        data,
+                        type: 'line'
+                    }
+                ]
+            }
+            myChart.setOption(option)
+        }
+        const data = [150, 230, 224, 218, 135, 147, 260]
+        // const data = []
+        init(data)
+
+
+
+    </script>
+</body>
+
+</html>
